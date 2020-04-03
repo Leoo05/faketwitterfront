@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "faketwitterfront"
+    }
+  },
+  "defaultProject": "faketwitterfront",
+  "cli": {
+    "analytics": false
+  }
 }

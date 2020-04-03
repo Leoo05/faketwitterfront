@@ -4,7 +4,7 @@ import { tweet } from './model/tweet.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css','./tweetStyles.css']
 })
 
 export class AppComponent {

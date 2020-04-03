@@ -1,0 +1,28 @@
+.tweetStyle{   
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+        background-color:azure;
+}
+
+.userName{
+    text-align: left;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-stretch: wider;
+    color: black;
+    font-size: 48px;
+    font-weight: 100;
+}
+
+.Text{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Comic Sans MS';
+    text-align: justify;
+    font-size: 24px;    
+
+}
+.svgicons{
+    height: 35px;    
+}
+
