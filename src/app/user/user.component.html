@@ -1,10 +1,19 @@
-<div class="header">
-    <h1>{{ userInfo.user }}</h1>
+<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+<div class="header" id="header_container">
+    <mat-card>
+        <h2 class="header" id="userName">Lorem ipsum dolor</h2>
+        <h4 class="header" id="num_followers">Lorem ipsum dolor</h4>
+    </mat-card>
 </div>
 
 <div class="new_tweet_text">
-    <input type="text" [(ngModel)]="newTweetText" />
-    <button (click)="publicar()">Publish</button>
+    <form class="input">
+        <mat-form-field class="example-full-width">
+            <mat-label>Tweet</mat-label>
+            <input matInput placeholder="Tweet hear">
+        </mat-form-field>
+        <button mat-raised-button (click)="publicar()">Publish</button>
+    </form>
 </div>
 
 <div *ngFor="let tweet of listaTweets" class="tweetStyle">
