@@ -25,7 +25,7 @@ export class TweetsService {
     let headers  = new HttpHeaders({
         "Content-Type":"application/json; charset=utf8"
       });    
-    return this.http.get<tweet[]>(this.accessPointURL+"/findUserTweets/"+user.idUser,{        
+    return this.http.get<tweet[]>(this.accessPointURL+"/findUserTweets/"+user.id,{        
       observe:'response'
     });
   }

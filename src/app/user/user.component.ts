@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { tweet } from '../model/tweet.model';
 import { user } from '../model/user.model';
+import {TweetsService} from '../services/tweets.service';
 
 @Component({
   selector: 'app-user',
@@ -9,11 +10,12 @@ import { user } from '../model/user.model';
 })
 export class UserComponent implements OnInit {
 
-  userInfo;
+  userInfo = new user("chikerita", "chikeritapwd");
   listaTweets;
   newTweetText: string;
-  constructor() {
-    
+  constructor(private tweetsService : TweetsService) {
+    this.userInfo.id = 2;
+    this.listaTweets = tweetsService.getUserTweets(this.userInfo);
   }
 
   publicar() {
