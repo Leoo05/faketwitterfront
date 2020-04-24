@@ -1,11 +1,6 @@
 export class tweet {
-    user: string;
-    text: string;
-    date: string;
-    likes: number;
-
-    constructor (user, text){
-        this.user = user;
-        this.text = text;
-    }
+    idTweet : number;
+    idUser : number;
+    message: string;
+    date: Date;        
 }
