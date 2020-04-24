@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
+
 import { tweet } from './model/tweet.model';
 import { user } from './model/user.model';
 import {TweetsService} from './services/tweets.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css','./tweetStyles.css']
+  styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
+
 
   title = 'faketwitterfront';
   listaTweets = [];
