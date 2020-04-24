@@ -21,7 +21,7 @@ export class UserService {
     }
 
     public authenticateUser(user: user): Observable<HttpResponse<booleanReturn>> {    
-        return this.http.get<booleanReturn>(this.accessPointURL + "/" + user.user + "/" + user.password, {
+        return this.http.get<booleanReturn>(this.accessPointURL + "/" + user.username + "/" + user.password, {
             observe: 'response'
         });
     }
@@ -36,10 +36,9 @@ export class UserService {
     }
 
     public findUserByUsername(user : user) : Observable<HttpResponse<user>>{
-        this.userInfo = this.http.get<user>(this.accessPointURL+"/findUserByUsername",{
-            observe:'body'
-        });
-        console.log(this.userInfo);
+        this.userInfo = this.http.get<user>(this.accessPointURL+"/findUserByUsername/"+user.username,{
+            observe:'response'
+        });        
         return this.userInfo;
     }
 

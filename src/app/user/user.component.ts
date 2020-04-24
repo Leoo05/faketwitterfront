@@ -13,17 +13,20 @@ import { UserService } from '../services/user.service';
 })
 export class UserComponent implements OnInit {
 
-  userInfo;
+  userInfo: user;
   userFollowers;
   listaTweets: tweet[];
   tweets;
   newTweetText: string;
-  constructor(private tweetsService: TweetsService, private userService : UserService) {        
-    //this.userInfo = userService.getUserInfo();    
-    this.userInfo = new user('chikerita','chikeritapwd');    
-    userService.findUserByUsername(this.userInfo);
-    this.userInfo = userService.getUserInfo();
-    this.getTweets();
+  constructor(private tweetsService: TweetsService, private userService: UserService) {
+    userService.getUserInfo().subscribe(resp => {
+      const keys = resp.headers.keys();
+      let headers = keys.map(key =>
+        `${key}: ${resp.headers.get(key)}`);
+      this.userInfo = resp.body;
+      console.log(this.userInfo);      
+      this.getTweets();
+    });
   }
   getTweets() {
     this.tweetsService.getUserTweets(this.userInfo).subscribe(resp => {
@@ -44,13 +47,13 @@ export class UserComponent implements OnInit {
     let mm = String(today.getMonth() + 1).padStart(2, '0');
     let yyyy = today.getFullYear();
     let newTweet = new tweet(this.userInfo.idUser, this.newTweetText, yyyy + '-' + mm + '-' + dd);
-    this.tweetsService.createTweet(newTweet).subscribe(resp =>{
+    this.tweetsService.createTweet(newTweet).subscribe(resp => {
       console.log(resp);
     });
   }
 
   ngOnInit(): void {
-    
+
   }
 
 }
