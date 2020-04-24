@@ -11,6 +11,8 @@ import { HttpClientModule } from "@angular/common/http";
  * SERVICIOS
  */
 import {TweetsService} from './services/tweets.service';
+import {UserService} from './services/user.service';
+import {FollowersService} from './services/followers.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import {TweetsService} from './services/tweets.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [TweetsService,],
+  providers: [TweetsService,
+    UserService,
+    FollowersService  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
