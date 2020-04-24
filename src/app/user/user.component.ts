@@ -9,8 +9,8 @@ import { user } from '../model/user.model';
 })
 export class UserComponent implements OnInit {
 
-  userInfo: user;
-  listaTweets = [];
+  userInfo;
+  listaTweets;
   newTweetText: string;
   constructor() {
     
