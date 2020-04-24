@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { tweet } from './model/tweet.model';
+import { user } from './model/user.model';
+import {TweetsService} from './services/tweets.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +16,13 @@ export class AppComponent {
   newTweetText: string;
   newTweetUser: string;
 
-  constructor() {
+  constructor(private tweetsService : TweetsService  ) {
 
+  }
+
+  getTweets(){
+    this.tweetsService.getUserTweets(){      
+    }
   }
 
   publicar() {
