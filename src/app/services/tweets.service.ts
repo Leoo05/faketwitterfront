@@ -21,7 +21,7 @@ export class TweetsService {
      * Get all news from the database
      */
     public getUserTweets(user: user): Observable<HttpResponse<tweet[]>> {
-        return this.http.get<tweet[]>(this.accessPointURL + "/findUserTweets/" + user.id, {
+        return this.http.get<tweet[]>(this.accessPointURL + "/findUserTweets/" + user.idUser, {
             observe: 'response'
         });
     }

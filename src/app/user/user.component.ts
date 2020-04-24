@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
   tweets;
   newTweetText: string;
   constructor(private tweetsService: TweetsService) {
-    this.userInfo.id = 2;
+    this.userInfo.idUser = 2;
   }
   getTweets() {
     this.tweetsService.getUserTweets(this.userInfo).subscribe(resp => {
