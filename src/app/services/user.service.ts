@@ -17,9 +17,8 @@ export class UserService {
         });
     }
 
-    public authenticateUser(user: user): Observable<HttpResponse<booleanReturn>> {
-        let response;
-        return response = this.http.get<booleanReturn>(this.accessPointURL + "/" + user.user + "/" + user.password, {
+    public authenticateUser(user: user): Observable<HttpResponse<booleanReturn>> {    
+        return this.http.get<booleanReturn>(this.accessPointURL + "/" + user.user + "/" + user.password, {
             observe: 'response'
         });
     }
@@ -31,5 +30,12 @@ export class UserService {
     }
     public deleteUser(user : user){
         return this.http.delete(this.accessPointURL+"/"+ user.idUser);
+    }
+
+
+    public findUserByUsername(user : user) : Observable<HttpResponse<user>>{
+        return this.http.get<user>(this.accessPointURL+"/findUserByUsername",{
+            observe:'response'
+        })
     }
 }
