@@ -21,12 +21,14 @@ import {TweetsService} from './services/tweets.service';
 import {UserService} from './services/user.service';
 import {FollowersService} from './services/followers.service';
 import { LogInComponent } from './log-in/log-in.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    LogInComponent
+    LogInComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
