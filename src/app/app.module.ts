@@ -13,11 +13,13 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /**
  * SERVICIOS
  */
 import {TweetsService} from './services/tweets.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {UserService} from './services/user.service';
+import {FollowersService} from './services/followers.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatCardModule
   ],
-  providers: [TweetsService,],
+  providers: [TweetsService,
+    UserService,
+    FollowersService  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

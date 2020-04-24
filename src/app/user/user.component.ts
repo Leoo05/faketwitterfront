@@ -18,7 +18,6 @@ export class UserComponent implements OnInit {
   tweets;
   newTweetText: string;
   constructor(private tweetsService: TweetsService) {
-
     this.getTweets();
   }
   getTweets() {
