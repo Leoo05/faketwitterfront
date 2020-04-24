@@ -8,6 +8,13 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from "@angular/common/http";
 
 /**
+ * ANGULAR MATERIAL
+ */
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+/**
  * SERVICIOS
  */
 import {TweetsService} from './services/tweets.service';
@@ -23,7 +30,11 @@ import {FollowersService} from './services/followers.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [TweetsService,
     UserService,
