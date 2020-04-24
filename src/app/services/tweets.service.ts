@@ -20,11 +20,7 @@ export class TweetsService {
   /**
    * Get all news from the database
    */
-  public getUserTweets(user : user): Observable<HttpResponse<tweet[]>>  {
-    let body = JSON.stringify(user);
-    let headers  = new HttpHeaders({
-        "Content-Type":"application/json; charset=utf8"
-      });    
+  public getUserTweets(user : user): Observable<HttpResponse<tweet[]>>  {   
     return this.http.get<tweet[]>(this.accessPointURL+"/findUserTweets/"+user.id,{        
       observe:'response'
     });

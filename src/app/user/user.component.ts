@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { tweet } from '../model/tweet.model';
 import { user } from '../model/user.model';
-import {TweetsService} from '../services/tweets.service';
+import { TweetsService } from '../services/tweets.service';
 
 @Component({
   selector: 'app-user',
@@ -11,13 +11,23 @@ import {TweetsService} from '../services/tweets.service';
 export class UserComponent implements OnInit {
 
   userInfo = new user("chikerita", "chikeritapwd");
-  listaTweets;
+  listaTweets: [];
+  tweets;
   newTweetText: string;
-  constructor(private tweetsService : TweetsService) {
+  constructor(private tweetsService: TweetsService) {
     this.userInfo.id = 2;
-    this.listaTweets = tweetsService.getUserTweets(this.userInfo);
   }
-
+  getTweets() {
+    this.tweetsService.getUserTweets(this.userInfo).subscribe(resp => {
+      console.log(resp.body);
+      const keys = resp.headers.keys();
+      let headers = keys.map(key =>
+        `${key}: ${resp.headers.get(key)}`);
+      this.tweets = resp.body;
+      this.listaTweets = this.tweets.data;
+      console.log(this.listaTweets);
+    });
+  }
   publicar() {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
@@ -29,10 +39,11 @@ export class UserComponent implements OnInit {
       text: this.newTweetText,
       date: dd + '/' + mm + '/' + yyyy,
       likes: 0
-    }
-    this.listaTweets.push(newTweet);
+    }    
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getTweets();
+  }
 
 }
