@@ -1,12 +1,12 @@
 export class tweet {
     idTweet : number;
-    idUser : number;
+    idUser : string;
     message: string;
-    date: Date;
+    published_date: string;
 
     constructor(idUser, messge, date){
         this.idUser = idUser;
         this.message = messge;
-        this.date = date;
+        this.published_date = date;
     }
 }

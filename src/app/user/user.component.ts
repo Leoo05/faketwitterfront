@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { tweet } from '../model/tweet.model';
 import { user } from '../model/user.model';
 import { TweetsService } from '../services/tweets.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -12,13 +13,20 @@ import { TweetsService } from '../services/tweets.service';
 })
 export class UserComponent implements OnInit {
 
-  userInfo = new user("chikerita", "chikeritapwd");
+  userInfo: user;
   userFollowers;
-  listaTweets: [];
+  listaTweets: tweet[];
   tweets;
   newTweetText: string;
-  constructor(private tweetsService: TweetsService) {
-    this.getTweets();
+  constructor(private tweetsService: TweetsService, private userService: UserService) {
+    userService.getUserInfo().subscribe(resp => {
+      const keys = resp.headers.keys();
+      let headers = keys.map(key =>
+        `${key}: ${resp.headers.get(key)}`);
+      this.userInfo = resp.body;
+      console.log(this.userInfo);      
+      this.getTweets();
+    });
   }
   getTweets() {
     this.tweetsService.getUserTweets(this.userInfo).subscribe(resp => {
@@ -33,17 +41,19 @@ export class UserComponent implements OnInit {
   }
 
   publicar() {
+    console.log("PUBLICAR");
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let mm = String(today.getMonth() + 1).padStart(2, '0');
     let yyyy = today.getFullYear();
-
-    let newTweet = new tweet(this.userInfo.user, this.newTweetText, dd + '/' + mm + '/' + yyyy);
-    this.tweetsService.createTweet(newTweet);
+    let newTweet = new tweet(this.userInfo.idUser, this.newTweetText, yyyy + '-' + mm + '-' + dd);
+    this.tweetsService.createTweet(newTweet).subscribe(resp => {
+      console.log(resp);
+    });
   }
 
   ngOnInit(): void {
-    
+
   }
 
 }

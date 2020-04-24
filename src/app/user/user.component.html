@@ -7,13 +7,11 @@
 </div>
 
 <div class="new_tweet_text">
-    <form class="input">
-        <mat-form-field class="example-full-width">
-            <mat-label>Tweet</mat-label>
-            <input matInput placeholder="Tweet hear">
-        </mat-form-field>
-        <button mat-raised-button (click)="publicar()">Publish</button>
-    </form>
+    <mat-form-field class="example-full-width">
+        <mat-label>Tweet</mat-label>
+        <input matInput placeholder="Tweet hear" [(ngModel)]="newTweetText">
+    </mat-form-field>
+    <button mat-raised-button (click)="publicar()">Publish</button>
 </div>
 
 <div *ngFor="let tweet of listaTweets" class="tweetStyle">
