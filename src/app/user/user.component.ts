@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { tweet } from '../model/tweet.model';
 import { user } from '../model/user.model';
+import { TweetsService } from '../services/tweets.service';
 
 @Component({
   selector: 'app-user',
@@ -9,13 +10,24 @@ import { user } from '../model/user.model';
 })
 export class UserComponent implements OnInit {
 
-  userInfo;
-  listaTweets;
+  userInfo = new user("chikerita", "chikeritapwd");
+  listaTweets: [];
+  tweets;
   newTweetText: string;
-  constructor() {
-    
+  constructor(private tweetsService: TweetsService) {
+    this.userInfo.id = 2;
   }
-
+  getTweets() {
+    this.tweetsService.getUserTweets(this.userInfo).subscribe(resp => {
+      console.log(resp.body);
+      const keys = resp.headers.keys();
+      let headers = keys.map(key =>
+        `${key}: ${resp.headers.get(key)}`);
+      this.tweets = resp.body;
+      this.listaTweets = this.tweets.data;
+      console.log(this.listaTweets);
+    });
+  }
   publicar() {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
@@ -27,10 +39,11 @@ export class UserComponent implements OnInit {
       text: this.newTweetText,
       date: dd + '/' + mm + '/' + yyyy,
       likes: 0
-    }
-    this.listaTweets.push(newTweet);
+    }    
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getTweets();
+  }
 
 }
