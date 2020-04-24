@@ -18,7 +18,10 @@ export class UserComponent implements OnInit {
   listaTweets: tweet[];
   tweets;
   newTweetText: string;
-  constructor(private tweetsService: TweetsService, private userService : UserService) {
+  constructor(private tweetsService: TweetsService, private userService : UserService) {        
+    //this.userInfo = userService.getUserInfo();    
+    this.userInfo = new user('chikerita','chikeritapwd');    
+    userService.findUserByUsername(this.userInfo);
     this.userInfo = userService.getUserInfo();
     this.getTweets();
   }

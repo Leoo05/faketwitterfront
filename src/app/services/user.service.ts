@@ -37,8 +37,9 @@ export class UserService {
 
     public findUserByUsername(user : user) : Observable<HttpResponse<user>>{
         this.userInfo = this.http.get<user>(this.accessPointURL+"/findUserByUsername",{
-            observe:'response'
+            observe:'body'
         });
+        console.log(this.userInfo);
         return this.userInfo;
     }
 
