@@ -14,10 +14,11 @@ export class UserComponent implements OnInit {
 
   userInfo = new user("chikerita", "chikeritapwd");
   userFollowers;
-  listaTweets: [];
+  listaTweets: tweet[];
   tweets;
   newTweetText: string;
   constructor(private tweetsService: TweetsService) {
+    this.userInfo.idUser=2;
     this.getTweets();
   }
   getTweets() {
@@ -33,13 +34,15 @@ export class UserComponent implements OnInit {
   }
 
   publicar() {
+    console.log("PUBLICAR");
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = today.getFullYear();
-
-    let newTweet = new tweet(this.userInfo.user, this.newTweetText, dd + '/' + mm + '/' + yyyy);
-    this.tweetsService.createTweet(newTweet);
+    let newTweet = new tweet(this.userInfo.idUser, this.newTweetText, yyyy + '-' + mm + '-' + dd);
+    this.tweetsService.createTweet(newTweet).subscribe(resp =>{
+      console.log(resp);
+    });
   }
 
   ngOnInit(): void {

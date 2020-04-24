@@ -26,7 +26,8 @@ export class TweetsService {
         });
     }
     public createTweet(tweet: tweet) {
-        return this.http.post(this.accessPointURL + "/createTweet", tweet, {
+        console.log("SERVICIO PUBLCIAR");
+        return this.http.post(this.accessPointURL, tweet, {
             headers: this.headers
         });
     }
