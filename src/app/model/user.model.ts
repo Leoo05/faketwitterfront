@@ -1,7 +1,8 @@
 export class user{
-    id : number;
+    idUser : number;
     user : string;
     password : string;
+    creation_date : Date;
 
     constructor (user, password){
         this.user = user;
