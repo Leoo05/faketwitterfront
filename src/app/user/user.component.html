@@ -10,7 +10,7 @@
     <form class="input">
         <mat-form-field class="example-full-width">
             <mat-label>Tweet</mat-label>
-            <input matInput placeholder="Tweet hear">
+            <input matInput placeholder="Tweet hear" [(ngModel)]="newTweetText">
         </mat-form-field>
         <button mat-raised-button (click)="publicar()">Publish</button>
     </form>

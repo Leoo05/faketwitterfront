@@ -9,6 +9,9 @@ import { Observable } from 'rxjs';
 })
 
 export class UserService {
+
+    private userInfo;
+
     private headers: HttpHeaders;
     private accessPointURL: string = "http://localhost:3000/users";
     constructor(private http: HttpClient) {
@@ -32,10 +35,14 @@ export class UserService {
         return this.http.delete(this.accessPointURL+"/"+ user.idUser);
     }
 
-
     public findUserByUsername(user : user) : Observable<HttpResponse<user>>{
-        return this.http.get<user>(this.accessPointURL+"/findUserByUsername",{
+        this.userInfo = this.http.get<user>(this.accessPointURL+"/findUserByUsername",{
             observe:'response'
-        })
+        });
+        return this.userInfo;
+    }
+
+    public getUserInfo() : Observable<HttpResponse<user>>{
+        return this.userInfo;
     }
 }
