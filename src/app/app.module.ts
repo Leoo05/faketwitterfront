@@ -8,9 +8,16 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from "@angular/common/http";
 
 /**
+ * ANGULAR MATERIAL
+ */
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+/**
  * SERVICIOS
  */
 import {TweetsService} from './services/tweets.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +28,11 @@ import {TweetsService} from './services/tweets.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [TweetsService,],
   bootstrap: [AppComponent]

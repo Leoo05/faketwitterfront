@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { tweet } from '../model/tweet.model';
 import { user } from '../model/user.model';
 import { TweetsService } from '../services/tweets.service';
@@ -11,11 +13,13 @@ import { TweetsService } from '../services/tweets.service';
 export class UserComponent implements OnInit {
 
   userInfo = new user("chikerita", "chikeritapwd");
+  userFollowers;
   listaTweets: [];
   tweets;
   newTweetText: string;
   constructor(private tweetsService: TweetsService) {
-    this.userInfo.id = 2;
+
+    this.getTweets();
   }
   getTweets() {
     this.tweetsService.getUserTweets(this.userInfo).subscribe(resp => {
@@ -28,22 +32,19 @@ export class UserComponent implements OnInit {
       console.log(this.listaTweets);
     });
   }
+
   publicar() {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = today.getFullYear();
 
-    let newTweet = {
-      user: this.userInfo.user,
-      text: this.newTweetText,
-      date: dd + '/' + mm + '/' + yyyy,
-      likes: 0
-    }    
+    let newTweet = new tweet(this.userInfo.user, this.newTweetText, dd + '/' + mm + '/' + yyyy);
+    this.tweetsService.createTweet(newTweet);
   }
 
   ngOnInit(): void {
-    this.getTweets();
+    
   }
 
 }
