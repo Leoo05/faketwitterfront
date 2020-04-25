@@ -18,8 +18,9 @@ export class UserComponent implements OnInit {
   listaTweets: tweet[];
   tweets;
   newTweetText: string;
-  constructor(private tweetsService: TweetsService, private userService: UserService) {
-    userService.getUserInfo().subscribe(resp => {
+  constructor(private tweetsService: TweetsService, private userService: UserService) {    
+    console.log(this.userService.getUserInfo());
+    this.userService.getUserInfo().subscribe(resp => {
       const keys = resp.headers.keys();
       let headers = keys.map(key =>
         `${key}: ${resp.headers.get(key)}`);
