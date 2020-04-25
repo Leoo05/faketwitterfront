@@ -21,12 +21,22 @@ export class LogInComponent implements OnInit {
 
 
   getAuth(){
+    
+    console.log(this.username);
+    console.log(this.password);
+    this.userinfo = new user(this.username,this.password);
     this.userService.authenticateUser(this.userinfo).subscribe(resp => {
 
       console.log(resp.body);
-
+      let res = resp.body ;
+      if(res){
+         this.userService.findUserByUsername(this.userinfo).subscribe(resp =>{
+           
+        });
+      }
     }
-    
     )};
+
+    
 
 }
