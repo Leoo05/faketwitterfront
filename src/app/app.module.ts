@@ -17,12 +17,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /**
  * SERVICIOS
  */
+import {NavPageService} from './services/navPage.service';
 import {TweetsService} from './services/tweets.service';
 import {UserService} from './services/user.service';
 import {FollowersService} from './services/followers.service';
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
-import { WallComponent } from './wall/wall.component';
+import { WallComponent} from './wall/wall.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { WallComponent } from './wall/wall.component';
   ],
   providers: [TweetsService,
     UserService,
-    FollowersService  
+    FollowersService,
+    NavPageService  
   ],
   bootstrap: [AppComponent]
 })
