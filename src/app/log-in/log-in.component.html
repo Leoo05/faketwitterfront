@@ -1,0 +1,14 @@
+<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+<form class="form-signin">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputEmail" class="sr-only"></label>
+       <input [(ngModel)]="username" name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+       <label for="inputPassword" class="sr-only"></label>
+       <input [(ngModel)]="password" name="password"  type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+       <div class="checkbox">
+         <label>
+           <input type="checkbox" value="remember-me"> Remember me
+         </label>
+       </div>
+   <button (click) = "getAuth()" mat-raised-button type="button">Sign in</button>
+</form>

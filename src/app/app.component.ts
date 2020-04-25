@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 
 import { tweet } from './model/tweet.model';
 import { user } from './model/user.model';
@@ -9,6 +9,8 @@ import { user } from './model/user.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
 
 export class AppComponent {
 
