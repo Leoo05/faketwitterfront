@@ -35,7 +35,7 @@ export class TweetsService {
         return this.http.delete(this.accessPointURL + "/deleteTweet/" + tweet.idTweet);
     }
     public getAllTweets(): Observable<HttpResponse<tweet[]>> {
-        return this.http.get<tweet[]>(this.accessPointURL + "/findAllTweets", {
+        return this.http.get<tweet[]>(this.accessPointURL, {
             observe: 'response'
         });
     }    

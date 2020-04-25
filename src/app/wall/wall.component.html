@@ -1,20 +1,5 @@
-<link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
-<div class="header" id="header_container">
-    <mat-card>
-        <h2 class="header" id="userName">{{userInfo.username}}</h2>
-        <h4 class="header" id="num_followers">0</h4>
-    </mat-card>
-</div>
 
-<div class="new_tweet_text">
-    <mat-form-field class="example-full-width">
-        <mat-label>Tweet</mat-label>
-        <input matInput placeholder="Tweet hear" [(ngModel)]="newTweetText">
-    </mat-form-field>
-    <button mat-raised-button (click)="publicar()">Publish</button>
-</div>
-
-<div *ngFor="let tweet of listaTweets" class="tweetStyle">
+<div *ngFor="let tweet of tweets" class="tweetStyle">
     <span class="userName" id="tweetUser">
         {{ tweet.user }}
     </span>
